@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <title>Vizualization For Syrian Refugees</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* set the CSS */
+
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 2px;
+    }
+
+    .ticks {
+      font: 10px sans-serif;
+    }
+
+    .track,
+    .track-inset,
+    .track-overlay {
+      stroke-linecap: round;
+    }
+
+    .track {
+      stroke: #000;
+      stroke-opacity: 0.3;
+      stroke-width: 10px;
+    }
+
+    .track-inset {
+      stroke: #ddd;
+      stroke-width: 8px;
+    }
+
+    .track-overlay {
+      pointer-events: stroke;
+      stroke-width: 50px;
+      stroke: transparent;
+      cursor: crosshair;
+    }
+
+    .handle {
+      fill: #fff;
+      stroke: #000;
+      stroke-opacity: 0.5;
+      stroke-width: 1.25px;
+    }
+
+    .row.male {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      margin-bottom: 5px;
+    }
+
+    .row.male.female {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      margin-bottom: 5px;
+    }
+
+    .row.female {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      margin-bottom: 5px;
+    }
+
+  .svg-inline--fa.fa-male.fa-w-6{
+    color: #2166ac;
+  }
+
+  .svg-inline--fa.fa-female.fa-w-8{
+    color: #b2182b;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class = 'header'>
+    <h1>Syrian Refugee Crisis</h1>
+    <p>
+      The Syrian Refugee Crisis is a result of the civil war that is going on
+      in the Syrian Arab Republic.
+      The War is an ongoing multi-sided armed conflict in Syria
+      fought primarily between the Syrian Arab Republic led by
+      President Bashar al-Assad, along with its allies, and various forces opposing
+      both the government and each other in varying combinations.
+    </p>
+    <p>
+      The worst sufferers as a result of this war are the common people in Syria.
+      The war has resulted into a death toll of more than 400,000
+      since 2011, according to the World Bank, and 5 million people are seeking
+      refuge abroad and over 6 million have been displaced internally, according to the UN agencies.
+      By June 2017, the UN also estimated that 540,000 people were still living in besieged areas.
+    </p>
+    <p>
+      UNHCR is a United Nations agency that works for protecting and assisting refugees
+      around the world. They also maintain all the refugee data.
+      As of 2015, there are more than 11.5 million Syrian persons of concern according to the UNHCR data.
+      The below dashboard has been built to shed light on the situation of the refugees in the country,
+      and to understand the the refugee crisis in more detail.
+      One can draw many inferences from the dashboard and find out the details
+      of as to why the situation has been changing as seen in the data.
+      The data has been represented for five years before the war and five years during
+      the war to understand the dynamic better.
+    </p>
+    <p>
+      Before reading the dashboard there are various rules one needs to know about the data collection
+      which can be also found out on the UNHCR website for the data.
+      <li>Persons of concern in the 'time-series' dataset are categorized according to the situation
+        they are in.
+        You can read about it in detail <a href="http://popstats.unhcr.org/en/overview">here</a></li>
+      <li>The data is completely available until 2015. The 2016 data is sometimes marked with asterisks
+        for anonymity. There is no data available after 2016.
+        Hence the dashboard uses data only till 2015. </li>
+      <li>The demographic data is not always available, hence the data in the 'demographics' dataset
+        cannot be reconciled with 'time-series' data. The data for Syrian Arab Republic for 2009
+        is completely unavailable</li>
+    </p>
+  </div>
+
+  <hr>
+  <div class="slidercontainer">
+    <output>Year: <span id="slidervalue">2006</span></output>
+    <input class="slider" type="range" min="2006" max="2015" value="2006" id="year" step="1" />
+  </div>
+  <div id='top'>
+    <div class="demographics">
+      <div id="vis">
+        <h3>Age Wise Distribution of Refugees</h3>
+      </div>
+      <div id="malefemale">
+        <h3>Gender-wise Distribution of Refugees</h3>
+        <div class="icons" id="icons">
+          <!-- <i class="fas fa-male" id="m"></i>
+          <i class="fas fa-female" id="f"></i>   -->
+        </div>
+      </div>
+    </div>
+    <div id="people">
+      <div id="mainfigure">
+        <h3>Total Number of Refugees</h3>
+      </div>
+      <div id="PopTypeVis">
+        <h3>Persons of Concern</h3>
+      </div>
+    </div>
+    <div id="application">
+      <h3>Refugee Status Determination</h3>
+    </div>
+  </div>
+  <hr>
+
+  <script type="text/javascript" src="mainfigure.js"></script>
+  <script type="text/javascript" src="gender.js"></script>
+  <script type="text/javascript" src="donut.js"></script>
+  <script type="text/javascript" src="bar.js"></script>
+  <script type="text/javascript" src='stackedbar.js'></script>
+</body>
+
+</html>
